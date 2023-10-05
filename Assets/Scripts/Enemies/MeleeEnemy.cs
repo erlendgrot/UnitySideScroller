@@ -74,6 +74,7 @@ public class MeleeEnemy : MonoBehaviour
         new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 
+    //Animation reference (Function is executed in meleeAttack animation)
     private void DamagePlayer()
     {
         if (PlayerInSight())

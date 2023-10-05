@@ -29,8 +29,9 @@ public class Projectile : MonoBehaviour
 
         lifetime += Time.deltaTime;
 
+        // Deactivates the projectile after 5 seconds
         if (lifetime > 5) {
-            Deactivate();
+            Deactivate(); 
         }
     }
 
@@ -41,7 +42,7 @@ public class Projectile : MonoBehaviour
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
 
-        // Check if we hit the enemy
+        // Check if we hit the enemy (HERE IS WHERE THE ENEMY TAKES DAMAGE FROM THE PROJECTILE)
         if (collision.tag == "Enemy")
         {
             collision.GetComponent<Health>().TakeDamage(1);
@@ -53,7 +54,7 @@ public class Projectile : MonoBehaviour
     {
         lifetime = 0;
         direction = _direction;
-        gameObject.SetActive(true);
+        gameObject.SetActive(true); //Activates the projectile
         hit = false;
         boxCollider.enabled = true;
 

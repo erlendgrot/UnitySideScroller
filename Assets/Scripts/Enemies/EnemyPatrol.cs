@@ -33,10 +33,10 @@ public class EnemyPatrol : MonoBehaviour
         anim.SetBool("moving", false);
     }
 
-    //test
 
     private void Update()
     {
+        // Make enemy move in direction or change direction
         if (movingLeft)
         {
             if (enemy.position.x >= leftEdge.position.x)
@@ -56,7 +56,7 @@ public class EnemyPatrol : MonoBehaviour
     }
     
     
-
+    // Change the direction of the enemy
     private void DirectionChange()
     {
         anim.SetBool("moving", false);

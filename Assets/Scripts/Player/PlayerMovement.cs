@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("run", horizontalInput != 0); // To start the run animation
         anim.SetBool("grounded", isGrounded()); // To set the idle animation
 
-        // To move the player according to the input
+        // To move the player according to the input (MOVES THE PLAYER LEFT AND RIGHT)
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         body.gravityScale = 3;
 

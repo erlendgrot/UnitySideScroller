@@ -26,6 +26,7 @@ public class Health : MonoBehaviour
         spriteRend = GetComponent<SpriteRenderer>();
     }
 
+    // Both for enemy and player
     public void TakeDamage(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth); // Health can not go below 0 and not over startingHealth
@@ -63,6 +64,18 @@ public class Health : MonoBehaviour
     public void IncreaseHealth(float _value)
     {
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth); // Health can not go below 0 and not over startingHealth
+    }
+
+    public void Respawn()
+    {
+        dead = false;
+        IncreaseHealth(startingHealth);
+        anim.ResetTrigger("die"); // Makes the trigger "die" inside of the animator inactive
+        anim.Play("Idle");
+        StartCoroutine(Invunerability());
+
+        if (GetComponent<PlayerMovement>() != null)
+            GetComponent<PlayerMovement>().enabled = true; // So that the player can move after they have respawned
     }
 
     private IEnumerator Invunerability()

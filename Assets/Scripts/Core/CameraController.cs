@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
 {
     //Room camera
     //[SerializeField] private float speed;
-    //private float currentPosX;
+    private float currentPosX;
     //private Vector3 velocity = Vector3.zero;
 
     //Follow player (Player camera)
@@ -25,9 +25,10 @@ public class CameraController : MonoBehaviour
         lookAhead = Mathf.Lerp(lookAhead, (aheadDistance * player.localScale.x), Time.deltaTime * cameraSpeed);
     }
 
-    // Not necesary when using the traditional camera
-/*     public void MoveToNewRoom(Transform _newRoom)
+
+    // Moves the camera to a new room
+    public void MoveToNewRoom(Transform _newRoom)
     {
         currentPosX = _newRoom.position.x;
-    } */
+    }
 }
