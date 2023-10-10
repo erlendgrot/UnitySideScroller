@@ -11,11 +11,15 @@ public class UIManager : MonoBehaviour
     [Header ("Pause Menu")]
     [SerializeField] private GameObject pauseScreen;
 
+    [Header ("Level Complete")]
+    [SerializeField] private GameObject levelCompleteScreen;
+
     
     private void Awake()
     {
         gameOverScreen.SetActive(false);
         pauseScreen.SetActive(false);
+        levelCompleteScreen.SetActive(false);
     }
 
     private void Update()
@@ -31,6 +35,21 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    #region Level Complete
+    
+    public void levelComplete()
+    {
+        //Time.timeScale = 1;
+        levelCompleteScreen.SetActive(true);
+    }
+
+    public void pickNextLevel()
+    {
+        //Time.timeScale = 0;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    #endregion
 
     #region Game Over
     public void GameOver()
@@ -45,8 +64,10 @@ public class UIManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
+    // Does not work when paused
     public void MainMenu()
     {
+        //Time.timeScale = 0;
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
@@ -68,13 +89,14 @@ public class UIManager : MonoBehaviour
         // If status == true -> pause the game
         pauseScreen.SetActive(status);
 
+        // Bugged
         // To actually pause the game. 
-        if (status)
-        {
-            Time.timeScale = 0; // Pauses the game
-        } else {
-            Time.timeScale = 1; // Unpauses the game
-        }
+       // if (status)
+       // {
+       //     Time.timeScale = 0; // Pauses the game
+        //} else {
+       //     Time.timeScale = 1; // Unpauses the game
+       // }
         
     }
 
